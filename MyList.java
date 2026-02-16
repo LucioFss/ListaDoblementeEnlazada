@@ -6,8 +6,10 @@ public class MyList<T> {
     public MyList(){
         this.header = new Node<T>(null);
         this.trailer = new Node<T>(null);
+        this.size = 0;
         header.next = trailer;
         trailer.prev = header;
-
     }
+
+    public getSize()
 }

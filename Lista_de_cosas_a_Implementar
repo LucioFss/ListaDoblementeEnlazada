@@ -1,0 +1,25 @@
+1. Clases principales: Node y MyList.
+    -Node servira como conector entre elementos y guardara información dentro de el, funcionando 
+    como un elemento de una lista normal, solo que apuntara a un nodo anterior y a uno 
+    posterior
+    -MyList llevara toda la logica de y funcionalidad de una lista
+    
+2. metodos:
+    -Obtener la cantidad de elementos en la lista
+    -retornar si la lista esta vacia
+
+    -retornar si un elemento se encuentra en la lista
+
+    -buscar un elemento y si se encuentra retornarlo
+
+    -agregar un elemento al principio y  final, y ademas en una posición en especifico
+    -quitar un elemento al principio y  final, y ademas en una posición en especifico
+
+    -Imprimir en consola todos los elementos de la lista 
+    
+    -En caso que se necesiten, agregar metodos auxiliares y aclarar cuales son en este mismo
+     archivo de texto
+
+3. Refactorizar el programa (agregar exepciones)
+
+4 agregar comentarios a todo el programa

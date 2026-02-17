@@ -1,0 +1,4 @@
+En MyList los nodos al principio y al final de la lista doblemente enlazada no poseen los nombres de
+TAIL/HEAD debido a su propiedad de ser de tipo centinela, osea que su data sea nula y que solo sirve
+para facilitar el codigo y la logica. Sea el caso que los nodos de cabecera y cola no sean 
+sentinelas (que no se mantengan nulos) ahi si se deben de usar los nombres de head/tail

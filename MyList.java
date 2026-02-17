@@ -41,6 +41,43 @@ public class MyList<T> {
         size++;
     }
 
+    public void addPos(T elem, int index){
+        Node<T> newNode = new Node<>(elem);
+
+        Node<T> aux = getNode(index);
+
+        newNode.next = aux;
+        newNode.prev = aux.prev;
+
+        aux.prev.next = newNode;
+        aux.prev = newNode;
+        
+    }
+
+    public Node<T> getNode(int index){
+        //Nodo auxiliar para recorrer la lista
+        Node<T> aux;
+
+        //Planteamos dos casos, uno en el que se comienza desde el principio y otro desde el final
+        if(index < size/2){
+            //Se comienza desde el primero real, ya que header no cuenta como un elemento en la lista
+            aux = header.next;
+            //iteración hasta el indice indicado y se guarda el nodo en esa posción
+            for(int i = 0; i < index; i++){
+                aux = aux.next;
+            }
+        }else{
+            //Inciamos desde el ultimo real, ya que trailer no cuenta como un elemento en la lista
+            aux = trailer.prev;
+            //Iteración desde atras hasta llegar al indice indicado y guarda el nodo en esa posición
+            for(int i = size-1; i > index;i--){
+                aux = aux.prev;
+            }
+        }
+        //Se retorna el nodo buscado
+        return aux;
+    }
+
     public void printStringStart(){
         Node<T> aux = header;
         for(int i = 0; i <= size; i++){

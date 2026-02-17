@@ -9,4 +9,10 @@ public class Node<T>{
         this.prev = null;
     }
 
+    @Override
+    public String toString(){
+        System.out.println("" + data.toString());
+        return data.toString();
+    }
+
 }

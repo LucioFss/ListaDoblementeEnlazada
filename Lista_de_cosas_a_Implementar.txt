@@ -20,6 +20,9 @@
     -En caso que se necesiten, agregar metodos auxiliares y aclarar cuales son en este mismo
      archivo de texto
 
+     -auxiliares:
+        -getNode un metodo que retorna un nodo en una posición de la lista
+
 3. Refactorizar el programa (agregar exepciones)
 
 4 agregar comentarios a todo el programa

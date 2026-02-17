@@ -42,19 +42,26 @@ public class MyList<T> {
     }
 
     public void addPos(T elem, int index){
+        //Nuevo nodo a agregar con su contenido
         Node<T> newNode = new Node<>(elem);
 
+        //Nodo auxiliar que posee el nodo el cual pasara a estar adelante nuestro nuevo nodo
         Node<T> aux = getNode(index);
 
+        //El siguiente a nuestro nodo es el que estaba en la poscion moviendose 1 posicion adelante
         newNode.next = aux;
+        //El anterior a nuestro nodo es el anterior al que ya estaba en la posición por lo que no se desplaza
         newNode.prev = aux.prev;
 
+        //el nodo anterior al que estaba en la posción ahora su siguiente es nuestro nuevo nodo
         aux.prev.next = newNode;
+        //El nodo que estaba en la posción y se desplazo, ahora tiene como previo el nuevo nodo
         aux.prev = newNode;
-        
+
+        size++;
     }
 
-    public Node<T> getNode(int index){
+    private Node<T> getNode(int index){
         //Nodo auxiliar para recorrer la lista
         Node<T> aux;
 
@@ -78,19 +85,56 @@ public class MyList<T> {
         return aux;
     }
 
+    public T removeStart(){
+        Node<T> aux = header.next;
+
+        T elem = aux.data;
+
+        header.next.next.prev = header;
+        header.next = header.next.next;
+
+        aux.next = null;
+        aux.prev = null;
+
+        size--;
+
+        return elem;
+
+    }
+
+    public T removeFinal(){
+        Node<T> aux = trailer.prev;
+        T elem = aux.data;
+
+        trailer.prev = trailer.prev.prev;
+        trailer.prev.next = trailer;
+
+        aux.prev = null;
+        aux.next = null;
+
+        size--;
+        
+        return elem;
+    }
+
     public void printStringStart(){
         Node<T> aux = header;
-        for(int i = 0; i <= size; i++){
+        for(int i = 0; i < size; i++){
             aux = aux.next;
             System.out.print("[" + aux.data + "]");
         }
+
+        System.out.print("[" + null + "]\n");
     }
 
     public void printStringFinal(){
         Node<T> aux = trailer;
-        for(int i = size; i >= 0; i--){
+        System.out.print("[" + null + "]");
+        for(int i = size-1; i >= 0; i--){
             aux = aux.prev;
             System.out.print("[" + aux.data + "]");
+            
         }
+        System.out.print("\n");
     }
 }

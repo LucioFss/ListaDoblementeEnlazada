@@ -92,13 +92,14 @@ public class MyList<T> {
         //Nodo que sera eliminado
         Node<T> toRemove = header.next;
 
+        Node<T> newFirst = toRemove.next;
         //El contenido de el nodo para ser retornado luego
         T elem = toRemove.data;
 
         //El siguiente a la cabeza sentila ahora es el sucesosr al nodo a eliminar
-        header.next = toRemove.next;
+        header.next = newFirst;
         //El nodo previo al nodo sucesor de el eliminado es ahora el nodo a la cabeza centinela
-        toRemove.next.prev = header;
+        newFirst.prev = header;
 
         //Se desconceta en nodo de su previo y siguiente para que garbage collector lo elimine automaticamente
         toRemove.next = null;
@@ -113,17 +114,24 @@ public class MyList<T> {
     }
 
     public T removeFinal(){
-        Node<T> aux = trailer.prev;
-        T elem = aux.data;
+        //Nodo a eliminar
+        Node<T> toRemove = trailer.prev;
 
-        trailer.prev = trailer.prev.prev;
-        trailer.prev.next = trailer;
+        //El nodo que pasara a ser el ultimo elemento
+        Node<T> newLast = toRemove.prev;
 
-        aux.prev = null;
-        aux.next = null;
+        //Se guarda el contenido de el nodo a eliminar para luego retornarlo
+        T elem = toRemove.data;
 
+        //El nuevo nodo final se conecta con el centinela, reemplazando al anterior
+        newLast.next = trailer;
+        //El nuevo nodo previo al centinela de la cola es el nuevo nodo final
+        trailer.prev = newLast;
+
+        //Se decrementa la cantidad de elementos en la lista
         size--;
         
+        //Se retorna el contenido de el nodo eliminado
         return elem;
     }
 

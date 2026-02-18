@@ -1,10 +1,10 @@
 public class MyList<T> {
-    private Node<T> header;
-    private Node<T> trailer;
+    private final Node<T> header;
+    private final Node<T> trailer;
     private int size;
 
     public MyList(){
-        this.header = new Node<T>(null);
+        this.header = new Node<>(null);
         this.trailer = new Node<>(null);
         this.size = 0;
         header.next = trailer;
@@ -89,18 +89,25 @@ public class MyList<T> {
     }
 
     public T removeStart(){
-        Node<T> aux = header.next;
+        //Nodo que sera eliminado
+        Node<T> toRemove = header.next;
 
-        T elem = aux.data;
+        //El contenido de el nodo para ser retornado luego
+        T elem = toRemove.data;
 
-        header.next.next.prev = header;
-        header.next = header.next.next;
+        //El siguiente a la cabeza sentila ahora es el sucesosr al nodo a eliminar
+        header.next = toRemove.next;
+        //El nodo previo al nodo sucesor de el eliminado es ahora el nodo a la cabeza centinela
+        toRemove.next.prev = header;
 
-        aux.next = null;
-        aux.prev = null;
+        //Se desconceta en nodo de su previo y siguiente para que garbage collector lo elimine automaticamente
+        toRemove.next = null;
+        toRemove.prev = null;
 
+        //Se decrementa la cantidad de elementos en la lista
         size--;
 
+        //Se retorna el contenido del nodo eliminado
         return elem;
 
     }

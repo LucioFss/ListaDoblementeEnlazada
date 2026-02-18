@@ -13,12 +13,9 @@ public class Test {
         listaD.addPos(27, 5);
         listaD.printStringStart();
 
-        Node<Integer> num1 = new Node<Integer>(12);
 
-        num1.toString();
 
-        listaD.removeStart();
-        listaD.removeFinal();
+        listaD.removePos(4);
 
         listaD.printStringStart();
 

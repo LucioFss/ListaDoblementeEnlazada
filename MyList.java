@@ -24,6 +24,7 @@ public class MyList<T> {
 
         header.next.prev = newNode;
         newNode.next = header.next;
+
         newNode.prev = header;
         header.next = newNode;
 
@@ -36,8 +37,10 @@ public class MyList<T> {
         
         newNode.next = trailer;
         newNode.prev = trailer.prev;
+
         trailer.prev.next = newNode;
         trailer.prev = newNode;
+
         size++;
     }
 
@@ -114,6 +117,22 @@ public class MyList<T> {
 
         size--;
         
+        return elem;
+    }
+
+    public T removePos(int index){
+        Node<T> current = getNode(index);
+        Node<T> aux = current.prev;
+
+        T elem = current.data;
+
+        current.next.prev = aux;
+        aux.next = current.next;
+
+        current.next = null;
+        current.prev = null;
+        
+        size--;
         return elem;
     }
 

@@ -19,6 +19,7 @@ public class Test {
 
         listaD.printStringStart();
 
-        
+        System.out.println(listaD.get(5));
+        System.out.println(listaD.get(-10));
     }
 }
